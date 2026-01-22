@@ -1,14 +1,14 @@
-# SZ_l 判定与求解器（奇数模版本）使用说明
+# $SZ_l$ 判定与求解器（奇数模版本）使用说明
 
 ## 一、概述
 
-本代码实现了一个针对**奇数模 l** 的 SZ_l 图性质判定与 beta-定向求解器。该求解器可以：
+本代码实现了一个针对**奇数模 $l$** 的 $SZ_l$ 图性质判定与 beta-定向求解器。该求解器可以：
 
-1. **判定一个图是否为 SZ_l**：枚举所有合法的 beta 函数，检查是否每个 beta 都存在对应的定向方案。
+1. **判定一个图是否为 $SZ_l$**：枚举所有合法的 beta 函数，检查是否每个 beta 都存在对应的定向方案。
 2. **求解给定 beta 的定向**：对于用户指定的 beta 函数，输出一组具体的边定向方案。
-3. **输出反例**：如果图不是 SZ_l，会输出一个不可行的 beta 作为反例。
+3. **输出反例**：如果图不是 $SZ_l$，会输出一个不可行的 beta 作为反例。
 
-**重要限制**：本求解器**仅支持奇数模 l**（即 l 必须是正奇数，如 3, 5, 7, 9, ...）。对于偶数模的情况，请使用其他版本的求解器。
+**重要限制**：本求解器**仅支持奇数模 $l$**（即 $l$ 必须是正奇数，如 3, 5, 7, 9, ...）。对于偶数模的情况，请使用其他版本的求解器。
 
 ---
 
@@ -16,23 +16,23 @@
 
 ### 2.1 基本定义
 
-给定一个**无向连通多重图** G（允许重边，但不允许自环），以及一个**正奇数 l**。
+给定一个**无向连通多重图** $G$（允许重边，但不允许自环），以及一个**正奇数 $l$**。
 
-#### Z_l-boundary（Z_l 边界）
+#### $\mathbb{Z}_l$-boundary（$\mathbb{Z}_l$ 边界）
 
-一个函数 $\beta: V(G) \to \mathbb{Z}_l$ 称为 **Z_l-boundary**，如果满足：
+一个函数 $\beta: V(G) \to \mathbb{Z}_l$ 称为 **$\mathbb{Z}_l$-boundary**，如果满足：
 - 对每个顶点 $v$，$\beta(v) \in \{0, 1, 2, \ldots, l-1\}$
-- 所有顶点的 beta 值之和在模 l 意义下为 0：$\sum_{v \in V} \beta(v) \equiv 0 \pmod{l}$
+- 所有顶点的 beta 值之和在模 $l$ 意义下为 0：$\sum_{v \in V} \beta(v) \equiv 0 \pmod{l}$
 
 #### beta-定向（beta-orientation）
 
-对于给定的图 G 和 Z_l-boundary $\beta$，如果能找到一个**定向**（给每条边指定一个方向），使得对每个顶点 $v$：
+对于给定的图 $G$ 和 $\mathbb{Z}_l$-boundary $\beta$，如果能找到一个**定向**（给每条边指定一个方向），使得对每个顶点 $v$：
 $$(\text{出度} - \text{入度}) \equiv \beta(v) \pmod{l}$$
 则称这个定向为**beta-定向**。
 
-#### SZ_l 性质
+#### $SZ_l$ 性质
 
-图 G 称为 **SZ_l**，如果对于**所有可能的 Z_l-boundary $\beta$**，都存在对应的 beta-定向。
+图 $G$ 称为 **$SZ_l$**，如果对于**所有可能的 $\mathbb{Z}_l$-boundary $\beta$**，都存在对应的 beta-定向。
 
 ### 2.2 多重边的处理
 
@@ -43,7 +43,7 @@ $$(\text{出度} - \text{入度}) \equiv \beta(v) \pmod{l}$$
 - 顶点 $u$ 的贡献为：$(y) - (k-y) = 2y - k$
 - 顶点 $v$ 的贡献为：$(k-y) - (y) = -(2y - k)$
 
-因此，对于重数为 $k$ 的边对，顶点 $u$ 的贡献可以是集合 $\{k, k-2, k-4, \ldots, -k+2, -k\}$ 中的任意值（在模 l 意义下）。
+因此，对于重数为 $k$ 的边对，顶点 $u$ 的贡献可以是集合 $\{k, k-2, k-4, \ldots, -k+2, -k\}$ 中的任意值（在模 $l$ 意义下）。
 
 ### 2.3 约束转换
 
@@ -71,7 +71,7 @@ $$\sum_{e \ni v} \text{sign}(v,e) \cdot y_e \equiv \gamma(v) \pmod{l}$$
 2. 构建每个顶点关联的边及其符号（`_build_signs`）
 3. 计算常数项 $C_v$ 和 2 的逆元
 
-#### 步骤 2：枚举 beta（用于判定 SZ_l）
+#### 步骤 2：枚举 beta（用于判定 $SZ_l$）
 - 枚举前 $n-1$ 个顶点的 beta 值（每个在 $0..l-1$ 范围内）
 - 最后一个顶点的 beta 值由总和为 0 的条件确定
 - 总共有 $l^{n-1}$ 个不同的 beta 需要检查
@@ -90,7 +90,7 @@ $$\sum_{e \ni v} \text{sign}(v,e) \cdot y_e \equiv \gamma(v) \pmod{l}$$
 #### 步骤 4：组装解
 找到所有 $y_e$ 后，构造具体的边定向：
 - 对每条边对 $(u,v)$（重数 $k$），前 $y$ 条边定向为 $u \to v$，后 $k-y$ 条边定向为 $v \to u$
-- 验证每个顶点的 (出度 - 入度) 在模 l 意义下等于 $\beta(v)$
+- 验证每个顶点的 (出度 - 入度) 在模 $l$ 意义下等于 $\beta(v)$
 
 ### 3.2 复杂度分析
 
@@ -131,10 +131,10 @@ $$\sum_{e \ni v} \text{sign}(v,e) \cdot y_e \equiv \gamma(v) \pmod{l}$$
 - `enumerate_betas()`：生成器，枚举所有合法的 beta 函数
 - `solve_for_beta(beta)`：对给定的 beta 求解定向
   - 返回：`(是否可行, 解对象或None)`
-- `is_SZl(verbose=False, max_beta=None)`：判定图是否为 SZ_l
+- `is_SZl(verbose=False, max_beta=None)`：判定图是否为 $SZ_l$
   - `verbose`：是否输出进度信息
   - `max_beta`：可选，限制检查的 beta 数量（用于调试）
-  - 返回：`(是否为SZ_l, 反例beta或None)`
+  - 返回：`(是否为$SZ_l$, 反例beta或None)`（第一个值是布尔值，表示是否为 $SZ_l$）
 
 **辅助方法**：
 - `_collect_edge_bundles()`：收集边对及其重数
@@ -153,7 +153,7 @@ $$\sum_{e \ni v} \text{sign}(v,e) \cdot y_e \equiv \gamma(v) \pmod{l}$$
 
 ### 5.1 基本使用
 
-#### 示例 1：判定图是否为 SZ_l
+#### 示例 1：判定图是否为 $SZ_l$
 
 ```python
 import networkx as nx
@@ -229,8 +229,8 @@ python szl_odd_solver.py
 
 ### 6.1 `is_SZl()` 的输出
 
-- 如果图是 SZ_l：返回 `(True, None)`
-- 如果图不是 SZ_l：返回 `(False, beta_dict)`，其中 `beta_dict` 是一个不可行的 beta 反例
+- 如果图是 $SZ_l$：返回 `(True, None)`
+- 如果图不是 $SZ_l$：返回 `(False, beta_dict)`，其中 `beta_dict` 是一个不可行的 beta 反例
 
 ### 6.2 `solve_for_beta()` 的输出
 
@@ -285,7 +285,7 @@ Per-edge directions (first few):
 在调用 `solve_for_beta(beta)` 时，必须确保：
 - `beta` 的键集合等于图的顶点集合
 - 每个 `beta[v]` 在 $[0, l-1]$ 范围内
-- `sum(beta.values()) % l == 0`
+- `sum(beta.values()) % l == 0$（在模 $l$ 意义下为 0）
 
 如果不满足这些条件，函数会返回 `(False, None)`。
 
@@ -298,6 +298,21 @@ is_sz, witness = solver.is_SZl(verbose=True, max_beta=100)
 ```
 
 这样只会检查前 100 个 beta，用于快速测试。
+
+---
+
+## 附录：GitHub Markdown 数学公式说明
+
+GitHub 的 Markdown 渲染器支持数学公式，使用以下语法：
+
+- **行内公式**：使用 `$...$`，例如：$SZ_l$、$\mathbb{Z}_l$
+- **块级公式**：使用 `$$...$$`，例如：
+  $$\sum_{v \in V} \beta(v) \equiv 0 \pmod{l}$$
+
+注意：在 GitHub 上查看时，数学公式会自动渲染。如果某些公式没有正确显示，请确保：
+1. 公式被正确的 `$` 或 `$$` 包围
+2. 没有多余的空白字符干扰
+3. 使用了正确的 LaTeX 语法
 
 ---
 
@@ -324,9 +339,9 @@ is_sz, witness = solver.is_SZl(verbose=True, max_beta=100)
 
 A: 当 $l$ 为奇数时，2 在 $\mathbb{Z}_l$ 中可逆，这使得约束转换变得简单。对于偶数模的情况，需要更复杂的处理，本代码未实现。
 
-### Q2: 如果图不是 SZ_l，如何理解反例？
+### Q2: 如果图不是 $SZ_l$，如何理解反例？
 
-A: 反例 beta 是一个 Z_l-boundary，它满足所有合法性条件（值域正确、总和为 0），但不存在对应的 beta-定向。这证明了图不是 SZ_l。
+A: 反例 beta 是一个 $\mathbb{Z}_l$-boundary，它满足所有合法性条件（值域正确、总和为 0），但不存在对应的 beta-定向。这证明了图不是 $SZ_l$。
 
 ### Q3: 如何验证输出的定向是否正确？
 
@@ -347,7 +362,7 @@ A: 不可以。本代码假设输入是无向多重图，然后寻找一个定�
 
 ### 相关概念
 
-- **SZ_l 性质**：这是图论中的一个重要性质，与图的连通性、度数分布等密切相关。
+- **$SZ_l$ 性质**：这是图论中的一个重要性质，与图的连通性、度数分布等密切相关。
 - **beta-定向**：这是一种特殊的图定向问题，在组合优化和理论计算机科学中有广泛应用。
 - **模约束系统**：本问题本质上是一个模约束的整数规划问题。
 
