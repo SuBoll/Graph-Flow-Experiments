@@ -1,6 +1,6 @@
 ## SZ_5（奇数模）计算实验代码包：求解器 + 枚举器
 
-本目录用于论文/报告的计算实验与可复现性说明，包含两个脚本（建议放在同一个 GitHub 文件夹中）：
+本目录用于论文《Orientations of $10$-Edge-Connected Planar Graphs and Applications》的计算实验与可复现性说明，包含两个脚本（建议放在同一个 GitHub 文件夹中）：
 
 - `szl_odd_solver.py`：奇数模 $l$ 的 $SZ_l$ 判定与 $\beta$-定向求解器（本项目使用 $l=5$）。
 - `generate_nonisomorphic_4v12e.py`：枚举满足约束的 4 顶点、12 边（计重）的无向多重图；按同构去重后绘制总览图；并对每个图调用 `szl_odd_solver.py` 进行 $SZ_5$ 检测。
