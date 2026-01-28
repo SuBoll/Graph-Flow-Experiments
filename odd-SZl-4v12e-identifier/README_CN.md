@@ -24,10 +24,13 @@
  
 - `szl_odd_solver.py`
 - `generate_nonisomorphic_4v12e.py`
-- `README.md`（本文件）
-- `README_EN.md`（英文版）
+- `README_CN.md`（本文件）
+- `README.md`（英文版）
+
 
 `generate_nonisomorphic_4v12e.py` 会动态导入同目录下的 `szl_odd_solver.py` 来获取 `SZlOddSolver` 类，因此两者需要处于同一目录（或你自行修改导入路径）。
+
+目录中的 `nonisomorphic_4v12e_SZ_5_overview.png` 为 `generate_nonisomorphic_4v12e.py` 运行过程中生成的总览图。读者亦可自行运行脚本以重新生成该图像。
 
 ---
 
