@@ -171,7 +171,7 @@ Overall workflow:
 
 1. **Validity check**: verify vertex set matches; check that values are in the correct range; and ensure the total sum is 0 (mod $l$).  
 2. **Compute target residues**: for each vertex, calculate `target_residue[v]`.  
-3. **Establish variable domains**: for each edge bundle $e$, $y_e \in \{0, \dots, k_e\}$.  
+3. **Establish variable domains**: for each edge bundle $e$, $`y_e \in \{0, \dots, k_e\}`$.  
 4. **Variable ordering**: sort by domain size in ascending order (i.e., smaller $k_e$ first).  
 5. **DFS search**:  
    - **State**: `partial_sum[v]` (current sum of the integer parts of $S(v)$ contributed by assigned variables)  
@@ -213,13 +213,13 @@ This script packages “dataset generation + visualization + batch testing”:
 
 ### 7.1 Exact enumeration space
 
-Vertices are fixed as $\{1,2,3,4\}$. We consider the 6 unordered pairs:
+Vertices are fixed as $`\{1,2,3,4\}`$. We consider the 6 unordered pairs:
 
 $$
 (1,2),(1,3),(1,4),(2,3),(2,4),(3,4)
 $$
 
-For each pair, assign a multiplicity $k_{uv}\in\{0,1,2,3\}$ and filter by:
+For each pair, assign a multiplicity $`k_{uv}\in\{0,1,2,3\}`$ and filter by:
 
 - total multiplicity:
 
