@@ -194,6 +194,8 @@ Enumerate all valid $\beta$ and call `solve_for_beta`:
 - if any $\beta$ is infeasible, return `(False, beta)` as a witness
 - otherwise return `(True, None)`
 
+The parameter `max_beta` can be used to truncate the enumeration during debugging.
+
 ---
 
 ## 6. `generate_nonisomorphic_4v12e.py`: what it does
