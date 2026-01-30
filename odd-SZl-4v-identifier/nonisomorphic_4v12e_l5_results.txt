@@ -1,0 +1,20 @@
+Modulus l = 5, total edges = 12, min degree >= 4, max multiplicity per pair = 3
+Number of non-isomorphic graphs meeting constraints: 20
+Saved overview figure: C:\Users\subol\Desktop\SZl-identifier-main\SZl-identifier-main\nonisomorphic_4v12e_l5_overview.png
+
+Graph #12 is NOT SZ_5:
+- Edge multiplicities (sum=12): {(1, 2): 1, (1, 3): 1, (1, 4): 3, (2, 3): 1, (2, 4): 3, (3, 4): 3}
+- Vertex degrees: {1: 5, 2: 5, 3: 5, 4: 9}
+- All infeasible betas (vectors in vertex order [1, 2, 3, 4]):
+  [1] [0, 0, 0, 0]
+  Total: 1 infeasible beta(s).
+
+Graph #16 is NOT SZ_5:
+- Edge multiplicities (sum=12): {(1, 2): 1, (1, 3): 2, (1, 4): 2, (2, 3): 2, (2, 4): 2, (3, 4): 3}
+- Vertex degrees: {1: 5, 2: 5, 3: 7, 4: 7}
+- All infeasible betas (vectors in vertex order [1, 2, 3, 4]):
+  [1] [0, 0, 0, 0]
+  Total: 1 infeasible beta(s).
+
+Total run time: 3.62 s
+Results written to: C:\Users\subol\Desktop\SZl-identifier-main\SZl-identifier-main\nonisomorphic_4v12e_l5_results.txt
