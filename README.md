@@ -12,15 +12,14 @@ mathematical setting, algorithms, and usage instructions.
 
 ## Directory structure
 
-### `odd-SZl-4v12e-identifier/`
+### `odd-SZl-4v-identifier/`
 
 This folder contains code and documentation for identifying and testing
-$SZ_l$-properties **for odd modulus $l$**, focusing on a concrete experimental
-case:
+$SZ_l$-properties **for odd modulus $l$**, focusing on 4-vertex multigraphs:
 
-- 4-vertex, 12-edge (with multiplicity) undirected multigraphs
-- enumeration up to isomorphism
-- exhaustive testing of the $SZ_5$ property via a dedicated solver
+- 4-vertex, $3(l-1)$-edge (with multiplicity) undirected multigraphs for a given odd $l$
+- enumeration up to isomorphism (min degree $\ge l-1$, max multiplicity per pair $\le l-2$, connected)
+- exhaustive testing of the $SZ_l$ property via a dedicated solver
 
 The folder includes:
 - an $SZ_l$ decision and $\beta$-orientation solver for odd $l$
