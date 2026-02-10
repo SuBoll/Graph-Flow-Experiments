@@ -36,7 +36,6 @@ See the README **inside this directory** for step-by-step modeling, implementati
 
 Additional folders may be added in the future, for example:
 
-- experiments for **even modulus $SZ_l$** (already partially included in `general-SZl/`)
 - computational studies related to **$Z_k$-connectivity**
 - **nowhere-zero $k$-flows** or other graph flow generalizations
 
