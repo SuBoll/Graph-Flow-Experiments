@@ -1,4 +1,4 @@
-# GraphFlowExperiments
+# Graph-Flow-Experiments
 
 This repository collects small-scale computational experiments related to graph flows, orientations, and related problems in graphs.
 
