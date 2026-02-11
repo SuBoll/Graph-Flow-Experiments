@@ -17,8 +17,8 @@
 
 - `group_connectivity_solver.py`
 - `find_smallest_group_connected.py`（可选；会导入求解器）
-- `README_group_connectivity.md`（英文）
-- `README_group_connectivity_CN.md`（本文件，中文）
+- `README.md`（英文）
+- `README_CN.md`（本文件，中文）
 
 ---
 
@@ -176,4 +176,5 @@ python find_smallest_group_connected.py
 
 - 群连通性（对给定群 $`A`$ 的 A-连通性）通过枚举所有 A-边界（共 $`|A|^{n-1}`$ 个，因最后一个顶点由和为零唯一确定）并对每个边界做 nowhere-zero 流的回溯搜索来判定，复杂度关于 $`|V|`$、$`|E|`$ 是指数级的。
 - 实现面向 **小图、小群** 的实验；更大规模可考虑理论刻画或专用算法。
+
 
