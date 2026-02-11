@@ -5,7 +5,7 @@ This document describes the **group connectivity** solver and the script that se
 **Files:**
 
 - `group_connectivity_solver.py`: decides whether a connected multigraph is **A-connected** for a given finite abelian group $`A`$, and finds a **beta-flow** (orientation + flow values) for a given A-boundary $`\beta`$.
-- `find_smallest_group_connected.py`: enumerates simple 2-edge-connected graphs in a configurable vertex range and finds smallest graphs that are Z_2×Z_2–connected but not Z_4–connected, or Z_4–connected but not Z_2×Z_2–connected.
+- `find_smallest_group_connected.py`: enumerates simple 2-edge-connected graphs in a configurable vertex range and finds smallest graphs that are Z_2×Z_2–connected but not Z_4–connected, or Z_4–connected but not Z_2×Z_2–connected. (Note: This script needs to be further modified before being enabled)
 
 **Dependencies:** Python 3.8+, `networkx`. No matplotlib/numpy for the solver itself.
 
@@ -176,3 +176,4 @@ Edit `n_min` and `n_max` at the top of `main()` to change the vertex range.
 
 - Group connectivity (A-connectivity for a given group $`A`$) is checked by enumerating all A-boundaries (there are $`|A|^{n-1}`$ many, since the last vertex is determined by the sum condition) and, for each, running a backtracking search for a nowhere-zero flow. Complexity is exponential in $`|V|`$ and $`|E|`$.
 - The implementation is intended for **small graphs and small groups** (e.g. experiments). For larger instances, consider theoretical characterizations or more specialized algorithms.
+
