@@ -2,7 +2,8 @@
 
 This repository collects small-scale computational experiments related to
 graph flows, orientations, and group-valued connectivity problems in graphs,
-including $SZ_l$-orientations and group-valued nowhere-zero flows.
+including $SZ_l$-orientations, group-valued nowhere-zero flows, and
+continuous flow index optimization in the cycle space.
 
 The code is organized **by topic**, with each subdirectory being
 *self-contained* and accompanied by its **own README** explaining
@@ -11,6 +12,31 @@ the precise mathematical setting, algorithms, and usage instructions.
 ---
 
 ## Directory structure
+
+### `flow-index/`
+
+This folder contains code for computing the **flow index** of a connected
+multigraph via continuous optimization in the cycle space.
+
+Given a connected graph $G$ with cycle-space dimension
+$k = m - n + 1$, the script:
+
+- assigns integer cycle-space coefficients to each edge
+- constructs edge flow vectors in $\mathbb{R}^d$
+- enforces the **nowhere-zero constraint** $\|f_e\|_p \ge 1$
+- minimizes the maximum edge norm
+- outputs the flow value $r = M + 1$
+
+The folder includes:
+
+- `compute_flow_index.py`: main solver and visualization tools
+- detailed documentation of the mathematical formulation
+- reproducible examples (Petersen graph, wheel, cycle, dipole)
+
+See the README **inside this directory** for full mathematical background,
+API description, and usage instructions.
+
+---
 
 ### `odd-SZl-4v-identifier/`
 
@@ -64,9 +90,10 @@ algorithmic details, and usage examples.
 
 Additional folders may be added in the future, for example:
 
-- further studies of **group connectivity** for other finite abelian groups
+- further studies of **continuous flow invariants**
 - computational experiments on **nowhere-zero flows**
-- related problems in **graph orientations**, **connectivity**, and
+- extended investigations of **group connectivity**
+- related problems in **graph orientations**, **cycle space structure**, and
   flow constraints
 
 Each topic will be placed in a **separate directory** with its own
@@ -82,6 +109,7 @@ This repository is intended primarily for:
 - experimental verification
 - counterexample search
 - reproducibility support for related manuscripts
+- exploration of structural flow invariants
 
 The implementations prioritize **clarity and determinism** over large-scale
 performance, and are intended for small-to-moderate instances suitable for
