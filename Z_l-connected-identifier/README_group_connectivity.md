@@ -17,8 +17,8 @@ Keep in the same directory:
 
 - `group_connectivity_solver.py`
 - `find_smallest_group_connected.py` (optional; imports the solver)
-- `README_group_connectivity.md` (this file)
-- `README_group_connectivity_CN.md` (Chinese)
+- `README.md` (this file)
+- `README_CN.md` (Chinese)
 
 ---
 
@@ -176,4 +176,5 @@ Edit `n_min` and `n_max` at the top of `main()` to change the vertex range.
 
 - Group connectivity (A-connectivity for a given group $`A`$) is checked by enumerating all A-boundaries (there are $`|A|^{n-1}`$ many, since the last vertex is determined by the sum condition) and, for each, running a backtracking search for a nowhere-zero flow. Complexity is exponential in $`|V|`$ and $`|E|`$.
 - The implementation is intended for **small graphs and small groups** (e.g. experiments). For larger instances, consider theoretical characterizations or more specialized algorithms.
+
 
